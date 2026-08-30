@@ -2,30 +2,39 @@ import streamlit as st
 import streamlit.components.v1 as components
 import os
 
+# Automatically detect whether your system uses 'pages' or 'Pages'
 folder = "Pages" if os.path.exists("Pages") else "pages"
 
-# 1. REGISTER THE ROUTING MATRIX (Tell Streamlit all these sub-pages exist safely)
-# This maps the clean, text-only python filenames you created earlier.
+# Define explicit page targets to guarantee path alignment
+PAGE_HOME = "app.py"
+PAGE_BIO = f"{folder}/1_Get_To_know_Me.py"
+PAGE_EXERCISE = f"{folder}/2_Exercise_Science.py"
+PAGE_CS_HUB = f"{folder}/3_Computer_Science.py"
+PAGE_HARDWARE = f"{folder}/3A_Hardware_Engineering.py"
+PAGE_SOFTWARE = f"{folder}/3B_Software_Simulations.py"
+PAGE_CLIMBING = f"{folder}/4_Rock_Climbing.py"
+PAGE_NUTRITION = f"{folder}/5_Nutrition.py"
+PAGE_CURRICULUM = f"{folder}/6_Learning_Plan.py"
+
+# 1. REGISTER THE ROUTING MATRIX WITH STREAMLIT
 pages_matrix = [
-    st.Page("app.py", title="Main Menu", icon="🚀"),
-    st.Page(f"{folder}/1_Get_To_know_Me.py", title="Get To Know Me", icon="ℹ️"),
-    st.Page(f"{folder}/2_Exercise_Science.py", title="Exercise Science Study", icon="🏃‍♂️"),
-    st.Page(f"{folder}/3_Computer_Science.py", title="Computer Science Hub", icon="💻"),
-    st.Page(f"{folder}/3A_Hardware_Engineering.py", title="Hardware Engineering", icon="🔌"),
-    st.Page(f"{folder}/3B_Software_Simulations.py", title="Software Simulations", icon="💾"),
-    st.Page(f"{folder}/4_Rock_Climbing.py", title="Rock Climbing", icon="🧗"),
-    st.Page(f"{folder}/5_Nutrition.py", title="Sports Nutrition", icon="🥗"),
-    st.Page(f"{folder}/6_Learning_Plan.py", title="Weekly Learning Plan", icon="📋"),
+    st.Page(PAGE_HOME, title="Main Menu", icon="🚀"),
+    st.Page(PAGE_BIO, title="Get To Know Me", icon="ℹ️"),
+    st.Page(PAGE_EXERCISE, title="Exercise Science Study", icon="🏃‍♂️"),
+    st.Page(PAGE_CS_HUB, title="Computer Science Hub", icon="💻"),
+    st.Page(PAGE_HARDWARE, title="Hardware Engineering", icon="🔌"),
+    st.Page(PAGE_SOFTWARE, title="Software Simulations", icon="💾"),
+    st.Page(PAGE_CLIMBING, title="Rock Climbing", icon="🧗"),
+    st.Page(PAGE_NUTRITION, title="Sports Nutrition", icon="🥗"),
+    st.Page(PAGE_CURRICULUM, title="Weekly Learning Plan", icon="📋"),
 ]
 
-# 2. INTRODUCE THE NAVIGATION CORE (Hide the default sidebar navigation map)
-# This handles mobile optimization natively.
+# Hide default sidebar navigation map
 current_page = st.navigation(pages_matrix, position="hidden")
 
-# 3. CONFIGURE GLOBAL WINDOW FRAME
+# Configure window layout frame
 st.set_page_config(page_title="STEM Main Menu", page_icon="🚀", layout="centered")
 
-# --- MAIN PAGE GRAPHICS & MARKETING LOOP ---
 st.title("Welcome to the STEM Portal! 👋")
 st.caption("🌌 YMCA After-School Enrichment App")
 
@@ -38,7 +47,7 @@ Below is a live sample of one of my favorite subjects: **Astrophysics**.
 **Tap your phone screen**, pull back like a slingshot, and release to drop a miniature planet into orbit around the central star!
 """)
 
-# High-performance mobile touch-screen simulation engine string
+# High-performance mobile touch-screen simulation loop
 simulation_js = """
 <!DOCTYPE html>
 <html>
@@ -95,38 +104,37 @@ simulation_js = """
 </body>
 </html>
 """
-
 components.html(simulation_js, height=470)
 
 st.markdown("---")
 st.subheader("📂 Explore the App Navigation")
 
-# ROW 1: General Core Links
+# ROW 1: Core Content Links
 row1_col1, row1_col2 = st.columns(2)
 with row1_col1:
     if st.button("ℹ️ Get To Know Me", use_container_width=True):
-        st.switch_page("pages/1_Get_To_Know_Me.py")
+        st.switch_page(PAGE_BIO)
 with row1_col2:
     if st.button("📋 Weekly Learning Plan", use_container_width=True):
-        st.switch_page("pages/6_Learning_Plan.py")
+        st.switch_page(PAGE_CURRICULUM)
 
-# ROW 2: Academic Core Links
+# ROW 2: Academic Links
 row2_col1, row2_col2 = st.columns(2)
 with row2_col1:
     if st.button("🏃‍♂️ Exercise Science", use_container_width=True):
-        st.switch_page("pages/2_Exercise_Science.py")
+        st.switch_page(PAGE_EXERCISE)
 with row2_col2:
     if st.button("💻 Computer Science", use_container_width=True):
-        st.switch_page("pages/3_Computer_Science.py")
+        st.switch_page(PAGE_CS_HUB)
 
-# ROW 3: Specialization Links
+# ROW 3: Specializations
 row3_col1, row3_col2 = st.columns(2)
 with row3_col1:
     if st.button("🧗 Rock Climbing", use_container_width=True):
-        st.switch_page("pages/4_Rock_Climbing.py")
+        st.switch_page(PAGE_CLIMBING)
 with row3_col2:
     if st.button("🥗 Sports Nutrition", use_container_width=True):
-        st.switch_page("pages/5_Nutrition.py")
+        st.switch_page(PAGE_NUTRITION)
 
-# 4. EXECUTE RUNTIME INJECTION COMMAND (Mandatory block for modern Streamlit compilation)
+# Run page router engine
 current_page.run()
