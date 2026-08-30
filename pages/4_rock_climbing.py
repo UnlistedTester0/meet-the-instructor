@@ -4,7 +4,7 @@ import os
 st.set_page_config(page_title="Rock Climbing", page_icon="🧗", layout="centered")
 
 # --- 1. TOP IMAGE ZONE ---
-top_image_path = "pictures/climbing_top.jpg"
+top_image_path = "Pictures/climbing_top.jpg"
 if os.path.exists(top_image_path):
     st.image(top_image_path, width="stretch")
 else:
@@ -64,7 +64,7 @@ with col2:
 st.markdown("---")
 
 # --- 2. BOTTOM IMAGE ZONE ---
-bottom_image_path = "pictures/summit_team.jpg"
+bottom_image_path = "Pictures/summit_team.jpg"
 if os.path.exists(bottom_image_path):
     st.image(bottom_image_path, width="stretch", caption="Reaching the top!")
 else:
