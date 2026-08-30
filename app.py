@@ -2,11 +2,9 @@ import streamlit as st
 import os
 
 # 1. DEFINE DETECTED TARGET DIRECTORY
-# Checks both src_pages and pages formats dynamically
 folder = "src_pages" if os.path.exists("src_pages") else "pages"
 
 # 2. RUN RADAR TO DETECT ACTUAL FILENAMES ON THE SERVER
-# This scans your folder and stores the real names, completely bypassing spelling or casing errors.
 local_files = os.listdir(folder) if os.path.exists(folder) else []
 
 def find_file(prefix):
@@ -16,8 +14,9 @@ def find_file(prefix):
             return f"{folder}/{f}"
     return None
 
-# 3. CONSTRUCT THE PAGES MATRIX DYNAMICALLY WITH VERIFIED SYSTEM TARGETS
-pages_matrix = [st.Page("app.py", title="Main Menu", icon="🚀")]
+# 3. CONSTRUCT THE PAGES MATRIX DYNAMICALLY
+# CRITICAL FIX: Removed st.Page("app.py") from this list to permanently stop the infinite recursion crash!
+pages_matrix = []
 
 # Map page slots safely by locating their ordering number prefix
 p0 = find_file("0_")
