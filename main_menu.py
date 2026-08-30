@@ -1,24 +1,39 @@
 import streamlit as st
 import streamlit.components.v1 as components
-import os
 
-# Automatically detect whether your system uses 'pages' or 'Pages'
-folder = "src_pages" if os.path.exists("src_pages") else "pages"
+# 1. HARDCODE THE STATE PATH TARGETS FOR YOUR BUTTONS
+# By setting app.py as the home value, your subpages can switch back here easily!
+PAGE_HOME = "app.py"
+PAGE_BIO = "pages/1_Get_To_Know_Me.py"
+PAGE_EXERCISE = "pages/2_Exercise_Science.py"
+PAGE_CS_HUB = "pages/3_Computer_Science.py"
+PAGE_HARDWARE = "pages/3A_Hardware_Engineering.py"
+PAGE_SOFTWARE = "pages/3B_Software_Simulations.py"
+PAGE_CLIMBING = "pages/4_Rock_Climbing.py"
+PAGE_NUTRITION = "pages/5_Nutrition.py"
+PAGE_CURRICULUM = "pages/6_Learning_Plan.py"
 
-# Define explicit page targets to guarantee path alignment
-PAGE_HOME = "pages/0_main_menu.py"
-PAGE_BIO = "pages/1_get_to_know_me.py"
-PAGE_EXERCISE = "pages/2_exercise_science.py"
-PAGE_CS_HUB = "pages/3_computer_science.py"
-PAGE_HARDWARE = "pages/3a_hardware_engineering.py"
-PAGE_SOFTWARE = "pages/3b_software_simulations.py"
-PAGE_CLIMBING = "pages/4_rock_climbing.py"
-PAGE_NUTRITION = "pages/5_nutrition.py"
-PAGE_CURRICULUM = "pages/6_learning_plan.py"
+# 2. REGISTER THE MASTER ROUTING MATRIX WITH STREAMLIT
+# Setting app.py as the entry point means it renders our Main Menu home content directly!
+pages_matrix = [
+    st.Page(PAGE_HOME, title="Main Menu", icon="🚀", default=True),
+    st.Page(PAGE_BIO, title="Get To Know Me", icon="ℹ️"),
+    st.Page(PAGE_EXERCISE, title="Exercise Science Study", icon="🏃‍♂️"),
+    st.Page(PAGE_CS_HUB, title="Computer Science Hub", icon="💻"),
+    st.Page(PAGE_HARDWARE, title="Hardware Engineering", icon="🔌"),
+    st.Page(PAGE_SOFTWARE, title="Software Simulations", icon="💾"),
+    st.Page(PAGE_CLIMBING, title="Rock Climbing", icon="🧗"),
+    st.Page(PAGE_NUTRITION, title="Sports Nutrition", icon="🥗"),
+    st.Page(PAGE_CURRICULUM, title="Weekly Learning Plan", icon="📋"),
+]
 
-# Configure window layout frame
+# Configure the sliding drawer layout tracking sidebar
+current_page = st.navigation(pages_matrix, position="sidebar")
+
+# 3. CONFIGURE GLOBAL GLOBAL WINDOW TARGETS
 st.set_page_config(page_title="STEM Main Menu", page_icon="🚀", layout="centered")
 
+# --- MAIN MENU DISPLAY CONTENT ---
 st.title("Welcome to the STEM Portal! 👋")
 st.caption("🌌 YMCA After-School Enrichment App")
 
@@ -93,7 +108,7 @@ components.html(simulation_js, height=470)
 st.markdown("---")
 st.subheader("📂 Explore the App Navigation")
 
-# ROW 1: General Core Links
+# ROW 1: Core Navigation Target Buttons
 row1_col1, row1_col2 = st.columns(2)
 with row1_col1:
     if st.button("ℹ️ Get To Know Me", use_container_width=True):
@@ -119,3 +134,6 @@ with row3_col1:
 with row3_col2:
     if st.button("🥗 Sports Nutrition", use_container_width=True):
         st.switch_page(PAGE_NUTRITION)
+
+# 4. START THE CORE RUNTIME CONTAINER ENGINE
+current_page.run()
