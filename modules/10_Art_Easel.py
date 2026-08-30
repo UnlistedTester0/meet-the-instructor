@@ -11,20 +11,32 @@ Welcome to your side-by-side design workshop! Use the control dashboard on the l
 to instantly mix mediums, and sketch your concepts onto the canvas sheet.
 """)
 
-# High-performance side-by-side compact easel system
+# High-performance scrollable side-by-side compact easel workshop system
 easel_js = """
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        body { margin: 0; padding: 5px; background-color: #0b0f19; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; touch-action: none; }
+        /* 📜 SCROLL INJECTION CHANNELS: Allows smooth vertical scrolling inside tight phone screens */
+        html, body { 
+            margin: 0; 
+            padding: 5px; 
+            background-color: #0b0f19; 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            min-height: 100vh;
+            overflow-y: auto !important; 
+            -webkit-overflow-scrolling: touch;
+        }
         
         /* Master Horizontal Grid Alignment Container Box */
         .workbench-layout { display: flex; flex-direction: row; gap: 15px; width: 100%; max-width: 650px; background: #0f172a; border: 2px solid #1e293b; border-radius: 12px; padding: 12px; box-sizing: border-box; }
         
         /* Left Column: Compact Adjustment Core */
-        .control-tower { display: flex; flex-direction: column; justify-content: space-between; width: 180px; flex-shrink: 0; }
+        .control-tower { display: flex; flex-direction: column; width: 180px; flex-shrink: 0; }
         .control-group { background: #1e293b; border-radius: 8px; padding: 8px; margin-bottom: 8px; border: 1px solid #334155; }
         .group-title { font-size: 11px; font-weight: bold; color: #94a3b8; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
         
@@ -42,11 +54,11 @@ easel_js = """
         .brush-slider { width: 100%; cursor: pointer; margin-top: 4px; }
         
         /* Action buttons */
-        .clear-btn { width: 100%; background: #ef4444; border: none; color: white; padding: 8px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; box-shadow: 0 3px 6px rgba(0,0,0,0.2); margin-top: auto; }
+        .clear-btn { width: 100%; background: #ef4444; border: none; color: white; padding: 8px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; box-shadow: 0 3px 6px rgba(0,0,0,0.2); margin-top: 10px; }
         .clear-btn:active { background: #dc2626; }
         
         /* Right Column: Easel Visual Container Box */
-        .easel-frame { background: #5c4033; border: 8px solid #3d2b1f; border-radius: 6px; padding: 10px; box-shadow: inset 0 0 15px rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; flex-grow: 1; overflow: hidden; }
+        .easel-frame { background: #5c4033; border: 8px solid #3d2b1f; border-radius: 6px; padding: 10px; box-shadow: inset 0 0 15px rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; flex-grow: 1; overflow: hidden; height: fit-content; }
         .canvas-container { position: relative; overflow: hidden; border: 3px solid #f8fafc; border-radius: 2px; }
         canvas { background-color: #ffffff; display: block; cursor: crosshair; }
         
@@ -58,7 +70,7 @@ easel_js = """
         }
 
         /* Mobile Responsive Viewport Fallbacks */
-        @media (max-width: 500px) {
+        @media (max-width: 580px) {
             .workbench-layout { flex-direction: column; }
             .control-tower { width: 100%; }
             .palette-grid { grid-template-columns: repeat(6, 1fr); }
@@ -70,7 +82,6 @@ easel_js = """
     <div class="workbench-layout">
         <!-- 🗼 LEFT COLUMN: CONTROL INTERFACE -->
         <div class="control-tower">
-            <!-- Tool Matrix Block -->
             <div class="control-group">
                 <div class="group-title">🧰 Select Medium</div>
                 <button class="tool-btn active" id="btn-paint" onclick="setTool('paint')">🎨 Paint Brush</button>
@@ -78,7 +89,6 @@ easel_js = """
                 <button class="tool-btn" id="btn-spray" onclick="setTool('spray')">💨 Spray Paint</button>
             </div>
             
-            <!-- Color Mixing Block -->
             <div class="control-group">
                 <div class="group-title">🎨 Color Palette</div>
                 <div class="palette-grid">
@@ -91,7 +101,6 @@ easel_js = """
                 </div>
             </div>
             
-            <!-- Dynamic Gauge Slider Block -->
             <div class="control-group">
                 <div class="slider-row">
                     <span>Stroke Weight:</span>
@@ -100,7 +109,6 @@ easel_js = """
                 <input type="range" id="brushSize" class="brush-slider" min="2" max="35" value="10" oninput="updateSize()">
             </div>
             
-            <!-- Execution Control Trigger -->
             <button class="clear-btn" onclick="triggerPageRip()">📄 New Sheet</button>
         </div>
 
@@ -117,9 +125,9 @@ easel_js = """
         
         // Dynamically compute horizontal real-estate allocations
         const availableWidth = Math.min(window.innerWidth - 240, 400);
-        const targetSize = availableWidth < 200 ? Math.min(window.innerWidth - 40, 360) : availableWidth;
+        const targetSize = availableWidth < 200 ? Math.min(window.innerWidth - 40, 320) : availableWidth;
         
-        canvas.width = targetSize; canvas.height = targetSize * 0.8; // Structured Landscape Aspect Layout
+        canvas.width = targetSize; canvas.height = targetSize * 0.8;
         
         let isPainting = false; let strokeColor = '#020617'; let strokeSize = 10; let brushType = 'paint';
         let lastPoint = null; let sprayInterval = null;
