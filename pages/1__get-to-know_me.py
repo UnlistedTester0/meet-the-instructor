@@ -19,7 +19,7 @@ st.subheader("Matthew — Instructor Background")
 # Picture layout split
 col1, col2 = st.columns(2)
 with col1:
-    image_path = "pictures/profile.jpg" 
+    image_path = "Pictures/profile.jpg" 
     if os.path.exists(image_path):
         st.image(image_path, width="stretch")
     else:
