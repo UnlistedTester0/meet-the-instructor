@@ -1,6 +1,6 @@
 import streamlit as st
 
-# 1. REGISTER THE MASTER ROUTING MATRIX WITH EXACT SERVER STRING PATHS
+# 1. ENFORCE EXPLICIT PAGES MATRIX (Excluding app.py completely)
 pages_matrix = [
     st.Page("pages/0_Main_Menu.py", title="Main Menu", icon="🚀", default=True),
     st.Page("pages/1_Get_To_know_Me.py", title="Get To Know Me", icon="ℹ️"),
@@ -13,21 +13,8 @@ pages_matrix = [
     st.Page("pages/6_Learning_Plan.py", title="Weekly Learning Plan", icon="📋"),
 ]
 
-# Populate the navigation sidebar menu cleanly
+# 2. FORCE RENDER ONLY OUR MATRIX LIST INSIDE THE SIDEBAR
 current_page = st.navigation(pages_matrix, position="sidebar")
 
-# 2. INJECT CSS INJECTOR TO BLIND/HIDE THE BROKEN 'APP' SIDEBAR ELEMENT
-# This targets the exact HTML sidebar text layout and sets it to display none.
-st.markdown(
-    """
-    <style>
-        [data-testid="stSidebarNav"] ul li:first-child {
-            display: none !important;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# 3. Run the manager process
+# 3. RUN APPMATRIX CONTROLLER ENGINE
 current_page.run()
