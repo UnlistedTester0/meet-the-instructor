@@ -27,6 +27,8 @@ m3B = get_verified_path("3b_")
 m4 = get_verified_path("4_")
 m5 = get_verified_path("5_")
 m6 = get_verified_path("6_")
+m7 = get_verified_path("7_")
+m8 = get_verified_path("8_")
 
 # Safely register whatever file names are present in your online workspace
 if m0: pages_matrix.append(st.Page(m0, title="Main Menu", icon="🚀", default=True))
@@ -38,6 +40,8 @@ if m3B: pages_matrix.append(st.Page(m3B, title="Software Simulations", icon="�
 if m4: pages_matrix.append(st.Page(m4, title="Rock Climbing", icon="🧗"))
 if m5: pages_matrix.append(st.Page(m5, title="Sports Nutrition", icon="🥗"))
 if m6: pages_matrix.append(st.Page(m6, title="Weekly Learning Plan", icon="📋"))
+if m7: pages_matrix.append(st.Page(m7, title="Adopt A Pixel", icon="🔭"))
+if m8: pages_matrix.append(st.Page(m8, title="Philosophy & Stories", icon="🧠"))
 
 # 3. POSITION SIDEBAR DIRECTORY
 # Omitting app.py completely prevents the default ghost link from generating!
