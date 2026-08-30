@@ -21,4 +21,4 @@ with st.container(border=True):
 st.markdown("---")
 # Quick Branch Return Navigation
 if st.button("⬅️ Back to Computer Science Hub", use_container_width=True):
-    st.switch_page("pages/3_💻_Computer_Science.py")
+    st.switch_page("src_pages/3_💻_Computer_Science.py")
