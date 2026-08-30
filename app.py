@@ -8,7 +8,7 @@ folder = "Pages" if os.path.exists("Pages") else "pages"
 # This maps the clean, text-only python filenames you created earlier.
 pages_matrix = [
     st.Page("app.py", title="Main Menu", icon="🚀"),
-    st.Page(f"{folder}/1_Get_To_Know_Me.py", title="Get To Know Me", icon="ℹ️"),
+    st.Page(f"{folder}/1_Get_To_know_Me.py", title="Get To Know Me", icon="ℹ️"),
     st.Page(f"{folder}/2_Exercise_Science.py", title="Exercise Science Study", icon="🏃‍♂️"),
     st.Page(f"{folder}/3_Computer_Science.py", title="Computer Science Hub", icon="💻"),
     st.Page(f"{folder}/3A_Hardware_Engineering.py", title="Hardware Engineering", icon="🔌"),
