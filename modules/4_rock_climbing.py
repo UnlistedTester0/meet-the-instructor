@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-st.set_module_config(module_title="Rock Climbing", module_icon="🧗", layout="centered")
+st.set_page_config(page_title="Rock Climbing", page_icon="🧗", layout="centered")
 
 # TOP IMAGE ZONE
 top_image_path = "pictures/climbing_top.jpg"

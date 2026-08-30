@@ -1,13 +1,12 @@
 import streamlit as st
 
-st.set_module_config(module_title="Learning Plan", module_icon="📋", layout="centered")
+st.set_page_config(page_title="Learning Plan", page_icon="📋", layout="centered")
 
 st.header("📋 Student Learning Plan")
 st.subheader("YMCA After-School STEM Curriculum Calendar")
 
 st.markdown("""
-This calendar displays what concepts have been brought to the children's attention. 
-Each module focuses on an interactive, hands-on activity designed to teach problem-solving and critical thinking.
+This calendar displays what concepts have been brought to the children's attention. Each module focuses on an interactive, hands-on activity designed to teach problem-solving and critical thinking.
 """)
 
 with st.expander("🌌 Week 1: Gravity Wells & Spacetime"):

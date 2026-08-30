@@ -1,12 +1,11 @@
 import streamlit as st
 import os
 
-st.set_module_config(module_title="Get To Know Me", module_icon="ℹ️", layout="centered")
+st.set_page_config(page_title="Get To Know Me", page_icon="ℹ️", layout="centered")
 
 st.header("ℹ️ Get to Know Me")
 st.subheader("Matthew — Instructor Background")
 
-# Picture layout split
 col1, col2 = st.columns(2)
 with col1:
     image_path = "pictures/profile.jpg" 

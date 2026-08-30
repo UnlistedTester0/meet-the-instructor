@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_module_config(module_title="Hardware Engineering", module_icon="🔌", layout="centered")
+st.set_page_config(page_title="Hardware Engineering", page_icon="🔌", layout="centered")
 
 st.header("🔌 Hardware Engineering & Electronics")
 st.subheader("Silicon, Breadboards, & Custom Circuit Design")
