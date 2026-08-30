@@ -2,8 +2,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # 1. HARDCODE THE STATE PATH TARGETS FOR YOUR BUTTONS
-# By setting app.py as the home value, your subpages can switch back here easily!
-PAGE_HOME = "main_menu.py"
+# Standardizing back to app.py allows all subpage buttons to link here flawlessly!
+PAGE_HOME = "app.py"
 PAGE_BIO = "pages/1_Get_To_Know_Me.py"
 PAGE_EXERCISE = "pages/2_Exercise_Science.py"
 PAGE_CS_HUB = "pages/3_Computer_Science.py"
@@ -13,8 +13,8 @@ PAGE_CLIMBING = "pages/4_Rock_Climbing.py"
 PAGE_NUTRITION = "pages/5_Nutrition.py"
 PAGE_CURRICULUM = "pages/6_Learning_Plan.py"
 
-# 2. REGISTER THE MASTER ROUTING MATRIX WITH STREAMLIT
-# Setting app.py as the entry point means it renders our Main Menu home content directly!
+# 2. REGISTER THE SYSTEM ROUTING MATRIX
+# Custom Title Injection: We tell Streamlit to label this file as "Main Menu" on the screen!
 pages_matrix = [
     st.Page(PAGE_HOME, title="Main Menu", icon="🚀", default=True),
     st.Page(PAGE_BIO, title="Get To Know Me", icon="ℹ️"),
@@ -27,10 +27,10 @@ pages_matrix = [
     st.Page(PAGE_CURRICULUM, title="Weekly Learning Plan", icon="📋"),
 ]
 
-# Configure the sliding drawer layout tracking sidebar
+# Configure the sidebar layout directory engine
 current_page = st.navigation(pages_matrix, position="sidebar")
 
-# 3. CONFIGURE GLOBAL GLOBAL WINDOW TARGETS
+# 3. CONFIGURE GLOBAL WINDOW OPTIONS
 st.set_page_config(page_title="STEM Main Menu", page_icon="🚀", layout="centered")
 
 # --- MAIN MENU DISPLAY CONTENT ---
@@ -46,7 +46,7 @@ Below is a live sample of one of my favorite subjects: **Astrophysics**.
 **Tap your phone screen**, pull back like a slingshot, and release to drop a miniature planet into orbit around the central star!
 """)
 
-# High-performance mobile touch-screen simulation loop
+# High-performance mobile touch-screen simulation block
 simulation_js = """
 <!DOCTYPE html>
 <html>
@@ -108,32 +108,26 @@ components.html(simulation_js, height=470)
 st.markdown("---")
 st.subheader("📂 Explore the App Navigation")
 
-# ROW 1: Core Navigation Target Buttons
+# ROW 1: Button links
 row1_col1, row1_col2 = st.columns(2)
 with row1_col1:
-    if st.button("ℹ️ Get To Know Me", use_container_width=True):
-        st.switch_page(PAGE_BIO)
+    if st.button("ℹ️ Get To Know Me", use_container_width=True): st.switch_page(PAGE_BIO)
 with row1_col2:
-    if st.button("📋 Weekly Learning Plan", use_container_width=True):
-        st.switch_page(PAGE_CURRICULUM)
+    if st.button("📋 Weekly Learning Plan", use_container_width=True): st.switch_page(PAGE_CURRICULUM)
 
-# ROW 2: Academic Core Links
+# ROW 2: Academic Links
 row2_col1, row2_col2 = st.columns(2)
 with row2_col1:
-    if st.button("🏃‍♂️ Exercise Science", use_container_width=True):
-        st.switch_page(PAGE_EXERCISE)
+    if st.button("🏃‍♂️ Exercise Science", use_container_width=True): st.switch_page(PAGE_EXERCISE)
 with row2_col2:
-    if st.button("💻 Computer Science", use_container_width=True):
-        st.switch_page(PAGE_CS_HUB)
+    if st.button("💻 Computer Science", use_container_width=True): st.switch_page(PAGE_CS_HUB)
 
-# ROW 3: Specialization Links
+# ROW 3: Specializations
 row3_col1, row3_col2 = st.columns(2)
 with row3_col1:
-    if st.button("🧗 Rock Climbing", use_container_width=True):
-        st.switch_page(PAGE_CLIMBING)
+    if st.button("🧗 Rock Climbing", use_container_width=True): st.switch_page(PAGE_CLIMBING)
 with row3_col2:
-    if st.button("🥗 Sports Nutrition", use_container_width=True):
-        st.switch_page(PAGE_NUTRITION)
+    if st.button("🥗 Sports Nutrition", use_container_width=True): st.switch_page(PAGE_NUTRITION)
 
-# 4. START THE CORE RUNTIME CONTAINER ENGINE
+# 4. RUN ALL PROCESS CONTROLLERS
 current_page.run()

@@ -45,7 +45,7 @@ with nav_row2_col3:
 st.markdown("---")
 
 # ROW 3: Return Destination Vector
-PAGE_HOME = "main_menu.py"
+PAGE_HOME = "app.py"
 
 # --- Your back button at the bottom stays the same ---
 if st.button("⬅️ Back to Main Menu", use_container_width=True):

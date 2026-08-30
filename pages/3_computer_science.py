@@ -40,7 +40,7 @@ with nav_row2_col3:
     if st.button("📋 Learning Plan", use_container_width=True): st.switch_page("pages/6_Learning_Plan.py")
 
 st.markdown("---")
-PAGE_HOME = "main_menu.py"
+PAGE_HOME = "app.py"
 
 # --- Your back button at the bottom stays the same ---
 if st.button("⬅️ Back to Main Menu", use_container_width=True):

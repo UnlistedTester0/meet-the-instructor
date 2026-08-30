@@ -56,6 +56,6 @@ with nav_row2_col3:
 st.markdown("---")
 
 # ROW 3: Return Destination Vector
-PAGE_HOME = "main_menu.py"
+PAGE_HOME = "app.py"
 if st.button("⬅️ Back to Main Menu", use_container_width=True):
     st.switch_page(PAGE_HOME)
