@@ -6,12 +6,12 @@ import os
 folder = "src_pages" if os.path.exists("src_pages") else "pages"
 
 # Define explicit page targets to guarantee path alignment
-PAGE_BIO = "src_pages/1_Get_To_know_Me.py"
-PAGE_EXERCISE = "src_pages/2_Exercise_Science.py"
-PAGE_CS_HUB = "src_pages/3_Computer_Science.py"
-PAGE_CLIMBING = "src_pages/4_Rock_Climbing.py"
-PAGE_NUTRITION = "src_pages/5_Nutrition.py"
-PAGE_CURRICULUM = "src_pages/6_Learning_Plan.py"
+PAGE_BIO = "pages/1_Get_To_know_Me.py"
+PAGE_EXERCISE = "pages/2_Exercise_Science.py"
+PAGE_CS_HUB = "pages/3_Computer_Science.py"
+PAGE_CLIMBING = "pages/4_Rock_Climbing.py"
+PAGE_NUTRITION = "pages/5_Nutrition.py"
+PAGE_CURRICULUM = "pages/6_Learning_Plan.py"
 
 # Configure window layout frame
 st.set_page_config(page_title="STEM Main Menu", page_icon="🚀", layout="centered")
