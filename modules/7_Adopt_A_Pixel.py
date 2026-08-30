@@ -41,7 +41,7 @@ st.markdown("---")
 
 # --- NEW VISUAL CERTIFICATE ZONE ---
 # Positioned at the absolute bottom of the mission brief layout
-cert_img_path = "pictures/nasa_certificate.jpg"  # Adjust extension to .png if necessary
+cert_img_path = "Pictures/nasa_certificate.jpg"  # Adjust extension to .png if necessary
 
 with st.container(border=True):
     if os.path.exists(cert_img_path):
