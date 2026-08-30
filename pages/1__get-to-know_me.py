@@ -4,7 +4,7 @@ import os
 # Automatically look for directory changes
 folder = "Pages" if os.path.exists("Pages") else "pages"
 
-PAGE_HOME = "app.py"
+PAGE_HOME = "main_menu.py"
 PAGE_EXERCISE = f"{folder}/2_Exercise_Science.py"
 PAGE_CS_HUB = f"{folder}/3_Computer_Science.py"
 PAGE_CLIMBING = f"{folder}/4_Rock_Climbing.py"
@@ -69,4 +69,4 @@ st.markdown("---")
 PAGE_HOME_LOBBY = f"{folder}/0_Main_Menu.py"
 
 if st.button("⬅️ Back to Main Menu", use_container_width=True):
-    st.switch_page(PAGE_HOME_LOBBY)
+    st.switch_page(PAGE_HOME_)

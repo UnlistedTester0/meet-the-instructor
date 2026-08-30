@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 
 # 1. HARDCODE THE STATE PATH TARGETS FOR YOUR BUTTONS
 # By setting app.py as the home value, your subpages can switch back here easily!
-PAGE_HOME = "app.py"
+PAGE_HOME = "main_menu.py"
 PAGE_BIO = "pages/1_Get_To_Know_Me.py"
 PAGE_EXERCISE = "pages/2_Exercise_Science.py"
 PAGE_CS_HUB = "pages/3_Computer_Science.py"
