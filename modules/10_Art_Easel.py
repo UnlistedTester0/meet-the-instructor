@@ -11,14 +11,13 @@ Welcome to your side-by-side design workshop! Use the control dashboard on the l
 to instantly mix mediums, and sketch your concepts onto the canvas sheet. 
 """)
 
-# High-performance scroll-free side-by-side compact easel workshop system
+# High-performance touch-fixed side-by-side compact easel workshop system
 easel_js = """
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        /* 🛑 FIXED VIEWPORT OVERRIDES: Forcefully strip out all scroll capabilities */
         html, body { 
             margin: 0; 
             padding: 5px; 
@@ -29,9 +28,24 @@ easel_js = """
             align-items: center; 
             height: 100vh;
             overflow: hidden !important; 
+            touch-action: none;
         }
         
-        .workbench-layout { display: flex; flex-direction: row; gap: 15px; width: 100%; max-width: 650px; background: #0f172a; border: 2px solid #1e293b; border-radius: 12px; padding: 12px; box-sizing: border-box; }
+        /* 🚨 UNLOCKED WORKBENCH CONTAINER: Added solid padding to clear edge frame overlaps */
+        .workbench-layout { 
+            display: flex; 
+            flex-direction: row; 
+            gap: 15px; 
+            width: 100%; 
+            max-width: 650px; 
+            background: #0f172a; 
+            border: 2px solid #1e293b; 
+            border-radius: 12px; 
+            padding: 12px; 
+            box-sizing: border-box; 
+            padding-bottom: 20px !important;
+            z-index: 999;
+        }
         
         .control-tower { display: flex; flex-direction: column; width: 180px; flex-shrink: 0; }
         .control-group { background: #1e293b; border-radius: 8px; padding: 8px; margin-bottom: 8px; border: 1px solid #334155; }
@@ -43,7 +57,7 @@ easel_js = """
             background: #0f172a; 
             border: 1px solid #475569; 
             color: #94a3b8; 
-            padding: 4px 2px; 
+            padding: 6px 2px; 
             font-weight: bold; 
             border-radius: 4px; 
             cursor: pointer; 
@@ -202,6 +216,8 @@ easel_js = """
             document.getElementById('sizeVal').innerText = strokeSize + 'px';
         }
         
+
+        
         function clearCanvas() { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.beginPath(); }
 
         canvas.addEventListener('pointerdown', (e) => { 
@@ -218,4 +234,4 @@ easel_js = """
 
 """
 
-components.html(easel_js, height=540)
+components.html(easel_js, height=470)
