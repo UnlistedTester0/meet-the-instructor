@@ -17,7 +17,8 @@ Thank you so much for taking the time to explore this space! I designed this int
 as a direct window into what I teach and what your children are exploring in our program. 
 
 ### 🪐 Full Interactive N-Body Gravity Simulator
-Below is interactive astrophysics laboratory. 
+Below is a simple interactive astrophysics laboratory.
+Hypothesis: Can you send a planet into a stable orbit around the star? 
 * **Tap/Click and hold** anywhere on the screen to anchor a point.
 * **Drag your finger back** like a slingshot to build velocity.
 * **Release** to launch a custom planet into the gravity matrix!
@@ -86,3 +87,9 @@ simulation_js = """
 """
 
 components.html(simulation_js, height=470)
+
+st.markdown("---")
+
+# --- PRO TIP ELEMENT ---
+# Positioned cleanly directly beneath the canvas viewframe boundary
+st.warning("💡 **PRO TIP:** One of the best ways to learn in science is through failure and peer review!! If you can't get a planet into a stable orbit, refresh the page or even shoot multiple planets in one simulation and make some art!!!! Or you can ask someone else if they know how!")
