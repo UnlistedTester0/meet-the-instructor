@@ -85,25 +85,26 @@ st.subheader("📂 Explore the App Navigation")
 row1_col1, row1_col2 = st.columns(2)
 with row1_col1:
     if st.button("ℹ️ Get To Know Me", use_container_width=True):
-        st.switch_page("pages/1_ℹ️_Get_To_Know_Me.py")
+        st.switch_page("pages/1_Get_To_Know_Me.py")
 with row1_col2:
     if st.button("📋 Weekly Learning Plan", use_container_width=True):
-        st.switch_page("pages/6_📋_Learning_Plan.py")
+        st.switch_page("pages/6_Learning_Plan.py")
 
 # ROW 2: Academic Core Links
 row2_col1, row2_col2 = st.columns(2)
 with row2_col1:
     if st.button("🏃‍♂️ Exercise Science", use_container_width=True):
-        st.switch_page("pages/2_🏃‍♂️_Exercise_Science.py")
+        st.switch_page("pages/2_Exercise_Science.py")
 with row2_col2:
     if st.button("💻 Computer Science", use_container_width=True):
-        st.switch_page("pages/3_💻_Computer_Science.py")
+        st.switch_page("pages/3_Computer_Science.py")
 
 # ROW 3: Specialization Links
 row3_col1, row3_col2 = st.columns(2)
 with row3_col1:
     if st.button("🧗 Rock Climbing", use_container_width=True):
-        st.switch_page("pages/4_🧗_Rock_Climbing.py")
+        st.switch_page("pages/4_Rock_Climbing.py")
 with row3_col2:
     if st.button("🥗 Sports Nutrition", use_container_width=True):
-        st.switch_page("pages/5_🥗_Nutrition.py")
+        st.switch_page("pages/5_Nutrition.py")
+

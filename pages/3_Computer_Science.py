@@ -27,17 +27,17 @@ st.subheader("📂 Main App Navigation")
 # Standardized Footer Rows
 nav_row1_col1, nav_row1_col2 = st.columns(2)
 with nav_row1_col1:
-    if st.button("ℹ️ Get To Know Me Overview", use_container_width=True): st.switch_page("pages/1_ℹ️_Get_To_Know_Me.py")
+    if st.button("ℹ️ Get To Know Me Overview", use_container_width=True): st.switch_page("pages/1_Get_To_Know_Me.py")
 with nav_row1_col2:
-    if st.button("🏃‍♂️ Exercise Science Study", use_container_width=True): st.switch_page("pages/2_🏃‍♂️_Exercise_Science.py")
+    if st.button("🏃‍♂️ Exercise Science Study", use_container_width=True): st.switch_page("pages/2️_Exercise_Science.py")
 
 nav_row2_col1, nav_row2_col2, nav_row2_col3 = st.columns(3)
 with nav_row2_col1:
-    if st.button("🧗 Rock Climbing", use_container_width=True): st.switch_page("pages/4_🧗_Rock_Climbing.py")
+    if st.button("🧗 Rock Climbing", use_container_width=True): st.switch_page("pages/4_Rock_Climbing.py")
 with nav_row2_col2:
-    if st.button("🥗 Sports Nutrition", use_container_width=True): st.switch_page("pages/5_🥗_Nutrition.py")
+    if st.button("🥗 Sports Nutrition", use_container_width=True): st.switch_page("pages/5_Nutrition.py")
 with nav_row2_col3:
-    if st.button("📋 Learning Plan", use_container_width=True): st.switch_page("pages/6_📋_Learning_Plan.py")
+    if st.button("📋 Learning Plan", use_container_width=True): st.switch_page("pages/6_Learning_Plan.py")
 
 st.markdown("---")
 if st.button("⬅️ Back to Main Menu", use_container_width=True): st.switch_page("app.py")
