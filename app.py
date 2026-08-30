@@ -29,6 +29,8 @@ m5 = get_verified_path("5_")
 m6 = get_verified_path("6_")
 m7 = get_verified_path("7_")
 m8 = get_verified_path("8_")
+m9 = get_verified_path("9_")
+m10 = get_verified_path("10_")
 
 # Safely register whatever file names are present in your online workspace
 if m0: pages_matrix.append(st.Page(m0, title="Main Menu", icon="🚀", default=True))
@@ -42,6 +44,8 @@ if m5: pages_matrix.append(st.Page(m5, title="Sports Nutrition", icon="🥗"))
 if m6: pages_matrix.append(st.Page(m6, title="Weekly Learning Plan", icon="📋"))
 if m7: pages_matrix.append(st.Page(m7, title="Adopt A Pixel", icon="🔭"))
 if m8: pages_matrix.append(st.Page(m8, title="Philosophy & Stories", icon="🧠"))
+if m9: pages_matrix.append(st.Page(m9, title="STEAM Portal Overview", icon="🎨"))
+if m10: pages_matrix.append(st.Page(m10, title="Bob Ross Art Easel", icon="🖌️"))
 
 # 3. POSITION SIDEBAR DIRECTORY
 # Omitting app.py completely prevents the default ghost link from generating!
