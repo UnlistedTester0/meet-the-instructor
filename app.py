@@ -4,7 +4,7 @@ import streamlit as st
 # Notice app.py itself is NOT in this list. It only acts as the router.
 pages_matrix = [
     st.Page("pages/0_Main_Menu.py", title="Main Menu", icon="🚀", default=True),
-    st.Page("pages/1_Get_To_Know_Me.py", title="Get To Know Me", icon="ℹ️"),
+    st.Page("pages/1_Get_To_know_Me.py", title="Get To Know Me", icon="ℹ️"),
     st.Page("pages/2_Exercise_Science.py", title="Exercise Science Study", icon="🏃‍♂️"),
     st.Page("pages/3_Computer_Science.py", title="Computer Science Hub", icon="💻"),
     st.Page("pages/3A_Hardware_Engineering.py", title="Hardware Engineering", icon="🔌"),
