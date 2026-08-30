@@ -17,8 +17,3 @@ with st.container(border=True):
 with st.container(border=True):
     st.markdown("#### 🧬 Custom Physics & ALife Systems")
     st.write("I design algorithms that recreate natural laws, including spatial environments in **Blender** and complex artificial life (ALife) engines that mirror ecosystem feedback loops.")
-
-st.markdown("---")
-# Quick Branch Return Navigation
-if st.button("⬅️ Back to Computer Science Hub", use_container_width=True):
-    st.switch_page("pages/3_💻_Computer_Science.py")

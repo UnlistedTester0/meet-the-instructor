@@ -1,22 +1,12 @@
 import streamlit as st
 import os
 
-# DEFINE STANDARDIZED NAVIGATION TARGETS
-PAGE_HOME = "app.py"
-PAGE_BIO = "pages/1_Get_To_Know_Me.py"
-PAGE_EXERCISE = "pages/2_Exercise_Science.py"
-PAGE_CS_HUB = "pages/3_Computer_Science.py"
-PAGE_NUTRITION = "pages/5_Nutrition.py"
-PAGE_CURRICULUM = "pages/6_Learning_Plan.py"
-
 st.set_page_config(page_title="Rock Climbing", page_icon="🧗", layout="centered")
 
 # TOP IMAGE ZONE
 top_image_path = "pictures/climbing_top.jpg"
 if os.path.exists(top_image_path):
     st.image(top_image_path, width="stretch")
-else:
-    st.info("📷 [Pictures Folder] Top Climbing Visual Asset Placeholder")
 
 st.header("🧗 Climbing, Problem Solving & Training")
 
@@ -71,33 +61,3 @@ st.markdown("---")
 bottom_image_path = "pictures/summit_team.jpg"
 if os.path.exists(bottom_image_path):
     st.image(bottom_image_path, width="stretch", caption="Reaching the top!")
-else:
-    st.info("📷 [Pictures Folder] Bottom Summit Visual Asset Placeholder")
-
-st.markdown("---")
-st.subheader("📂 Explore My Specialties & Resources")
-
-# ROW 1: Academic Focus Areas
-nav_row1_col1, nav_row1_col2 = st.columns(2)
-with nav_row1_col1:
-    if st.button("ℹ️ Get To Know Me Overview", use_container_width=True):
-        st.switch_page(PAGE_BIO)
-with nav_row1_col2:
-    if st.button("🏃‍♂️ Exercise Science Study", use_container_width=True):
-        st.switch_page(PAGE_EXERCISE)
-
-# ROW 2: Practical Application Focus Areas
-nav_row2_col1, nav_row2_col2, nav_row2_col3 = st.columns(3)
-with nav_row2_col1:
-    if st.button("💻 Computer Science", use_container_width=True):
-        st.switch_page(PAGE_CS_HUB)
-with nav_row2_col2:
-    if st.button("🥗 Sports Nutrition", use_container_width=True):
-        st.switch_page(PAGE_NUTRITION)
-with nav_row2_col3:
-    if st.button("📋 Learning Plan", use_container_width=True):
-        st.switch_page(PAGE_CURRICULUM)
-
-st.markdown("---")
-if st.button("⬅️ Back to Main Menu", use_container_width=True):
-    st.switch_page(PAGE_HOME)
