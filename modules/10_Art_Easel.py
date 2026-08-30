@@ -4,21 +4,21 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="Art Easel Lab", page_icon="🎨", layout="centered")
 
 st.header("🖌️ The Interactive Art Easel")
-st.subheader("Bob Ross Studio: Compact Workbench Layout")
+st.subheader("Bob Ross Studio: Fixed Workbench Layout")
 
 st.markdown("""
 Welcome to your side-by-side design workshop! Use the control dashboard on the left 
-to instantly mix mediums, and sketch your concepts onto the canvas sheet.
+to instantly mix mediums, and sketch your concepts onto the canvas sheet. 
 """)
 
-# High-performance scrollable side-by-side compact easel workshop system
+# High-performance scroll-free side-by-side compact easel workshop system
 easel_js = """
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        /* 📜 SCROLL INJECTION CHANNELS: Allows smooth vertical scrolling inside tight phone screens */
+        /* 🛑 FIXED VIEWPORT OVERRIDES: Forcefully strip out all scroll capabilities */
         html, body { 
             margin: 0; 
             padding: 5px; 
@@ -26,50 +26,55 @@ easel_js = """
             font-family: sans-serif; 
             display: flex; 
             justify-content: center; 
-            align-items: flex-start; 
-            min-height: 100vh;
-            overflow-y: auto !important; 
-            -webkit-overflow-scrolling: touch;
+            align-items: center; 
+            height: 100vh;
+            overflow: hidden !important; 
         }
         
-        /* Master Horizontal Grid Alignment Container Box */
         .workbench-layout { display: flex; flex-direction: row; gap: 15px; width: 100%; max-width: 650px; background: #0f172a; border: 2px solid #1e293b; border-radius: 12px; padding: 12px; box-sizing: border-box; }
         
-        /* Left Column: Compact Adjustment Core */
         .control-tower { display: flex; flex-direction: column; width: 180px; flex-shrink: 0; }
         .control-group { background: #1e293b; border-radius: 8px; padding: 8px; margin-bottom: 8px; border: 1px solid #334155; }
         .group-title { font-size: 11px; font-weight: bold; color: #94a3b8; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
         
-        /* Tool selection layouts */
-        .tool-btn { width: 100%; background: #0f172a; border: 1px solid #475569; color: #94a3b8; padding: 6px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 11px; margin-bottom: 4px; text-align: left; }
+        .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; width: 100%; }
+        
+        .tool-btn { 
+            background: #0f172a; 
+            border: 1px solid #475569; 
+            color: #94a3b8; 
+            padding: 4px 2px; 
+            font-weight: bold; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 10px; 
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         .tool-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; }
         
-        /* Palette configuration */
         .palette-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
         .color-swatch { height: 26px; border-radius: 4px; border: 2px solid #0f172a; cursor: pointer; transition: transform 0.1s ease; }
         .color-swatch.active { border-color: #ffffff; transform: scale(1.05); }
         
-        /* Slider sizing elements */
         .slider-row { display: flex; align-items: center; justify-content: space-between; color: #fff; font-size: 11px; font-weight: bold; }
         .brush-slider { width: 100%; cursor: pointer; margin-top: 4px; }
         
-        /* Action buttons */
         .clear-btn { width: 100%; background: #ef4444; border: none; color: white; padding: 8px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 12px; box-shadow: 0 3px 6px rgba(0,0,0,0.2); margin-top: 10px; }
         .clear-btn:active { background: #dc2626; }
         
-        /* Right Column: Easel Visual Container Box */
         .easel-frame { background: #5c4033; border: 8px solid #3d2b1f; border-radius: 6px; padding: 10px; box-shadow: inset 0 0 15px rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; flex-grow: 1; overflow: hidden; height: fit-content; }
         .canvas-container { position: relative; overflow: hidden; border: 3px solid #f8fafc; border-radius: 2px; }
         canvas { background-color: #ffffff; display: block; cursor: crosshair; }
         
-        /* Page Rip Keyframe Trigger Classes */
         .rip-active { animation: ripSheet 0.4s ease-in forwards; }
         @keyframes ripSheet {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
             100% { transform: translateY(350px) rotate(4deg); opacity: 0; }
         }
 
-        /* Mobile Responsive Viewport Fallbacks */
         @media (max-width: 580px) {
             .workbench-layout { flex-direction: column; }
             .control-tower { width: 100%; }
@@ -84,9 +89,11 @@ easel_js = """
         <div class="control-tower">
             <div class="control-group">
                 <div class="group-title">🧰 Select Medium</div>
-                <button class="tool-btn active" id="btn-paint" onclick="setTool('paint')">🎨 Paint Brush</button>
-                <button class="tool-btn" id="btn-marker" onclick="setTool('marker')">🖊️ Chisel Marker</button>
-                <button class="tool-btn" id="btn-spray" onclick="setTool('spray')">💨 Spray Paint</button>
+                <div class="tool-grid">
+                    <button class="tool-btn active" id="btn-paint" onclick="setTool('paint')">🎨 Paint</button>
+                    <button class="tool-btn" id="btn-marker" onclick="setTool('marker')">🖊️ Pen</button>
+                    <button class="tool-btn" id="btn-spray" onclick="setTool('spray')">💨 Spray</button>
+                </div>
             </div>
             
             <div class="control-group">
@@ -122,8 +129,6 @@ easel_js = """
 
     <script>
         const canvas = document.getElementById('paintCanvas'); const ctx = canvas.getContext('2d');
-        
-        // Dynamically compute horizontal real-estate allocations
         const availableWidth = Math.min(window.innerWidth - 240, 400);
         const targetSize = availableWidth < 200 ? Math.min(window.innerWidth - 40, 320) : availableWidth;
         
@@ -200,9 +205,9 @@ easel_js = """
         function clearCanvas() { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.beginPath(); }
 
         canvas.addEventListener('pointerdown', (e) => { 
-
             isPainting = true; 
             const rect = canvas.getBoundingClientRect();
+
             const clientX = e.touches ? e.touches.clientX : e.clientX;
             const clientY = e.touches ? e.touches.clientY : e.clientY;
             lastPoint = { x: clientX - rect.left, y: clientY - rect.top };
@@ -210,9 +215,7 @@ easel_js = """
         });
         canvas.addEventListener('pointermove', draw);
         window.addEventListener('pointerup', () => { isPainting = false; lastPoint = null; });
-    </script>
-</body>
-</html>
+
 """
 
-components.html(easel_js, height=504)
+components.html(easel_js, height=540)
