@@ -18,7 +18,7 @@ as a direct window into what I teach and what your children are exploring in our
 
 ### 🪐 Full Interactive N-Body Gravity Simulator
 Below is a simple interactive astrophysics laboratory.
-Hypothesis: Can you send a planet into a stable orbit around the star? 
+* **Hypothesis: Can you send a planet into a stable orbit around the star? 
 * **Tap/Click and hold** anywhere on the screen to anchor a point.
 * **Drag your finger back** like a slingshot to build velocity.
 * **Release** to launch a custom planet into the gravity matrix!
