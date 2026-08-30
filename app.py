@@ -1,7 +1,6 @@
 import streamlit as st
 
-# 1. REGISTER YOUR CLEAN CHAPTERS FROM THE UN-TRACKED MODULES LOCATION
-# Changing this directory path completely stops the automatic ghost link injection.
+# REGISTER YOUR CLEAN CHAPTERS FROM THE UN-TRACKED MODULES LOCATION
 pages_matrix = [
     st.Page("modules/0_Main_Menu.py", title="Main Menu", icon="🚀", default=True),
     st.Page("modules/1_Get_To_know_Me.py", title="Get To Know Me", icon="ℹ️"),
@@ -14,8 +13,8 @@ pages_matrix = [
     st.Page("modules/6_Learning_Plan.py", title="Weekly Learning Plan", icon="📋"),
 ]
 
-# 2. POSITION THE SIDEBAR MENUS NATIVELY
-current_page = st.navigation(modules_matrix, position="sidebar")
+# POSITION THE SIDEBAR MENUS NATIVELY
+current_page = st.navigation(pages_matrix, position="sidebar")
 
-# 3. RUN APPMATRIX CORE RUNTIME
-current_module.run()
+# RUN THE APPMATRIX CONTROLLER ENGINE
+current_page.run()
