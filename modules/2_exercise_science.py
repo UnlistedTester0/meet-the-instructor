@@ -32,7 +32,7 @@ with st.container(border=True):
 
 # --- NEW VISUAL ASSET CONTAINER ZONE ---
 # Positioned at the bottom of the page to showcase athletic endurance application
-mudder_img_path = "pictures/ToughMudder.jpg"
+mudder_img_path = "Pictures/ToughMudder.jpg"
 
 with st.container(border=True):
     if os.path.exists(mudder_img_path):

@@ -21,7 +21,7 @@ with st.container(border=True):
     """)
     
     # KiCad Footprint Visual Asset
-    pcb_img = "pictures/DDR5Footprint.png"
+    pcb_img = "Pictures/DDR5Footprint.png"
     if os.path.exists(pcb_img):
         st.image(pcb_img, caption="🎛️ Custom DDR5 Component Footprint inside KiCad Mapping Matrix", width="stretch")
     else:
@@ -43,14 +43,14 @@ with st.container(border=True):
 # --- SECTION 3: VERTICAL IMAGE STACK (Updated Orientation) ---
 # Separating into individual vertical content cards gives each layout full wide visibility
 with st.container(border=True):
-    schematic_img = "pictures/schematic_drawing.jpg"
+    schematic_img = "Pictures/schematic_drawing.jpg"
     if os.path.exists(schematic_img):
         st.image(schematic_img, caption="📝 Logic Blueprints: Clock, MAR, 16-Byte Memory & Bus Links", width="stretch")
     else:
         st.info("📷 [Pictures Folder] Paper Schematics Asset Placeholder")
 
 with st.container(border=True):
-    power_img = "pictures/breadboard_power.jpg"
+    power_img = "Pictures/breadboard_power.jpg"
     if os.path.exists(power_img):
         st.image(power_img, caption="⚡ Operational Phase: Integrated Sub-Modules Connected to Power", width="stretch")
     else:

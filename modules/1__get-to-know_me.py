@@ -9,7 +9,7 @@ st.subheader("Matthew — Instructor Background")
 # Top Layout Split: Photo & Intro Bio Text
 col1, col2 = st.columns(2)
 with col1:
-    image_path = "pictures/profile.jpg" 
+    image_path = "Pictures/profile.jpg" 
     if os.path.exists(image_path):
         st.image(image_path, width="stretch")
     else:
@@ -34,7 +34,7 @@ with st.container(border=True):
 
 # --- NEW VISUAL ASSET CONTAINER ZONE ---
 # Positioned cleanly at the base of your text profile profile layout
-extra_img_path = "pictures/UnlistedPlatform0.jpg"  # Change extension to .png if necessary
+extra_img_path = "Pictures/UnlistedPlatform0.jpg"  # Change extension to .png if necessary
 
 with st.container(border=True):
     if os.path.exists(extra_img_path):
@@ -44,7 +44,7 @@ with st.container(border=True):
         
 # --- NEW ADORABLE VISUAL CONTAINER ---
 # Positioned at the absolute bottom of your personal background chapter
-cat_img_path = "pictures/CatPC.jpg"  # Adjust to .png in Notepad++ if your file uses it!
+cat_img_path = "Pictures/CatPC.jpg"  # Adjust to .png in Notepad++ if your file uses it!
 
 with st.container(border=True):
     if os.path.exists(cat_img_path):
