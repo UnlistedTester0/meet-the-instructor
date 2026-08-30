@@ -215,4 +215,4 @@ easel_js = """
 </html>
 """
 
-components.html(easel_js, height=500)
+components.html(easel_js, height=504)
