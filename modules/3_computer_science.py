@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Computer Science", page_icon="💻", layout="centered")
+st.set_module_config(module_title="Computer Science", module_icon="💻", layout="centered")
 
 st.header("💻 Computer Science & Engineering")
 st.subheader("Languages, Hardware, & Custom Simulation Architecture")

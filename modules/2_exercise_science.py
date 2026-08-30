@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Exercise Science", page_icon="🏃‍♂️", layout="centered")
+st.set_module_config(module_title="Exercise Science", module_icon="🏃‍♂️", layout="centered")
 
 st.header("🏃‍♂️ Exercise Science Background")
 st.subheader("Black Hills State University — Spearfish, SD")

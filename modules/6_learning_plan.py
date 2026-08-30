@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Learning Plan", page_icon="📋", layout="centered")
+st.set_module_config(module_title="Learning Plan", module_icon="📋", layout="centered")
 
 st.header("📋 Student Learning Plan")
 st.subheader("YMCA After-School STEM Curriculum Calendar")

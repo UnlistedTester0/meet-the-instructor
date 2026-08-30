@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Sports Nutrition", page_icon="🥗", layout="centered")
+st.set_module_config(module_title="Sports Nutrition", module_icon="🥗", layout="centered")
 
 st.header("🥗 Nutrition as Fuel & Recovery")
 

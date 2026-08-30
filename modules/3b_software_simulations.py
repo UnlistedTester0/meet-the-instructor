@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Software Simulations", page_icon="💾", layout="centered")
+st.set_module_config(module_title="Software Simulations", module_icon="💾", layout="centered")
 
 st.header("💾 Software Engineering & Simulations")
 st.subheader("Custom Code Engines & Physical Systems modeling")

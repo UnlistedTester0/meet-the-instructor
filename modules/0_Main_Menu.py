@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # Configure global window structure
-st.set_page_config(page_title="STEM Main Menu", page_icon="🚀", layout="centered")
+st.set_module_config(module_title="STEM Main Menu", module_icon="🚀", layout="centered")
 
 st.title("Welcome to the STEM Portal! 👋")
 st.caption("🌌 YMCA After-School Enrichment App")

@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-st.set_page_config(page_title="Get To Know Me", page_icon="ℹ️", layout="centered")
+st.set_module_config(module_title="Get To Know Me", module_icon="ℹ️", layout="centered")
 
 st.header("ℹ️ Get to Know Me")
 st.subheader("Matthew — Instructor Background")
