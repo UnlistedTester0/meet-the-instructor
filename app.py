@@ -4,7 +4,7 @@ import os
 # Automatically detect whether your system uses 'pages' or 'Pages'
 folder = "Pages" if os.path.exists("Pages") else "pages"
 
-# 1. REGISTER THE ROUTING MATRIX WITH STREAMLIT
+# 1. REGISTER YOUR WORKING PAGES (This list completely excludes the root app.py)
 pages_matrix = [
     st.Page(f"{folder}/0_Main_Menu.py", title="Main Menu", icon="🚀"),
     st.Page(f"{folder}/1_Get_To_know_Me.py", title="Get To Know Me", icon="ℹ️"),
@@ -17,8 +17,10 @@ pages_matrix = [
     st.Page(f"{folder}/6_Learning_Plan.py", title="Weekly Learning Plan", icon="📋"),
 ]
 
-# 2. INTRODUCE THE NAVIGATION CORE (Hide the default sidebar navigation map)
-current_page = st.navigation(pages_matrix, position="hidden")
+# 2. ENFORCE SIDEBAR PLACEMENT
+# Setting position to "sidebar" forces the menu to stay active, while using our clean matrix list 
+# to keep the broken root app.py entry hidden.
+current_page = st.navigation(pages_matrix, position="sidebar")
 
 # 3. RUN THE BOOT ROUTER (Launches your home lobby screen automatically)
 current_page.run()
