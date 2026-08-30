@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import os
 
 # Automatically detect whether your system uses 'pages' or 'Pages'
-folder = "Pages" if os.path.exists("Pages") else "pages"
+folder = "src_pages" if os.path.exists("src_pages") else "pages"
 
 # Define explicit page targets to guarantee path alignment
 PAGE_BIO = "src_pages/1_Get_To_know_Me.py"
