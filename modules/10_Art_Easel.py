@@ -1,4 +1,4 @@
-pythonimport streamlit as st
+import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Art Easel Lab", page_icon="🎨", layout="centered")
@@ -44,7 +44,12 @@ easel_html = """
         const target = Math.min(window.innerWidth - 160, 320); canvas.width = target < 150 ? window.innerWidth - 30 : target; canvas.height = canvas.width * 0.75;
         let isPainting = false; let strokeColor = '#020617'; let strokeSize = 10; let brushType = 'paint'; let lastPoint = null; let sprayInterval = null;
         clearCanvas();
-        function getPos(e) { const r = canvas.getBoundingClientRect(); return { x: (e.clientX || e.touches[0].clientX) - r.left, y: (e.clientY || e.touches[0].clientY) - r.top }; }
+        function getPos(e) {
+            const r = canvas.getBoundingClientRect();
+            const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+            const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+            return { x: clientX - r.left, y: clientY - r.top };
+        }
         function draw(e) {
             if (!isPainting) return; const p = getPos(e);
             if (brushType === 'spray') { lastPoint = p; } else {
@@ -62,8 +67,11 @@ easel_html = """
         function setColor(c, e) { strokeColor = c; document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active')); e.classList.add('active'); }
         function updateSize() { strokeSize = document.getElementById('brushSize').value; }
         function clearCanvas() { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.lineJoin = 'round'; }
+        
         canvas.addEventListener('pointerdown', (e) => { isPainting = true; lastPoint = getPos(e); if (brushType === 'spray') generateSpray(); else draw(e); });
         canvas.addEventListener('pointermove', draw); window.addEventListener('pointerup', () => { isPainting = false; lastPoint = null; });
+        canvas.addEventListener('touchstart', (e) => { isPainting = true; lastPoint = getPos(e); if (brushType === 'spray') generateSpray(); else draw(e); e.preventDefault(); }, { passive: false });
+        canvas.addEventListener('touchmove', draw, { passive: false }); window.addEventListener('touchend', () => { isPainting = false; lastPoint = null; });
     </script>
 </body>
 </html>
