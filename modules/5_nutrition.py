@@ -23,5 +23,3 @@ with st.container(border=True):
 with st.container(border=True):
     st.markdown("#### 🔋 Healthy Fats: Long-Term System Stability")
     st.write("Crucial for cellular membrane protection, joint lubrication, and maintaining steady hormone regulation over long hours.")
-
-st.info("💡 **Fun Lesson Link:** I love showing the kids that nutrients are exactly like input variables in a software loop—what you put into the system directly dictates the performance output!")
