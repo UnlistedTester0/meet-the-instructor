@@ -17,7 +17,7 @@ Thank you so much for taking the time to explore this space! I designed this int
 as a direct window into what I teach and what your children are exploring in our program. 
 
 ### 🪐 Full Interactive N-Body Gravity Simulator
-Below is your original astrophysics laboratory. 
+Below is interactive astrophysics laboratory. 
 * **Tap/Click and hold** anywhere on the screen to anchor a point.
 * **Drag your finger back** like a slingshot to build velocity.
 * **Release** to launch a custom planet into the gravity matrix!
