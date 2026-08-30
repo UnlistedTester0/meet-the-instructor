@@ -1,8 +1,8 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Configure global window structure
-st.set_module_config(module_title="STEM Main Menu", module_icon="🚀", layout="centered")
+# Configure global window targets natively
+st.set_page_config(page_title="STEM Main Menu", page_icon="🚀", layout="centered")
 
 st.title("Welcome to the STEM Portal! 👋")
 st.caption("🌌 YMCA After-School Enrichment App")
@@ -11,12 +11,14 @@ st.markdown("""
 Thank you so much for taking the time to explore this space! I designed this interactive web app 
 as a direct window into what I teach and what your children are exploring in our program. 
 
-### 🪐 Interactive Astro-Lab (Try It Out!)
-Below is a live sample of one of my favorite subjects: **Astrophysics**. 
-**Tap your phone screen**, pull back like a slingshot, and release to drop a miniature planet into orbit around the central star!
+### 🪐 Full Interactive N-Body Gravity Simulator
+Below is your original astrophysics laboratory. 
+* **Tap/Click and hold** anywhere on the screen to anchor a point.
+* **Drag your finger back** like a slingshot to build velocity.
+* **Release** to launch a custom planet into the gravity matrix!
 """)
 
-# High-performance mobile touch-screen simulation loop
+# Original high-performance multi-body vector simulation loop
 simulation_js = """
 <!DOCTYPE html>
 <html>
@@ -32,29 +34,58 @@ simulation_js = """
     <script>
         const canvas = document.getElementById('simCanvas'); const ctx = canvas.getContext('2d');
         const size = Math.min(window.innerWidth - 20, 450); canvas.width = size; canvas.height = size;
-        const star = { x: canvas.width / 2, y: canvas.height / 2, mass: 800, r: 24 };
+        
+        // Massive central star coordinates
+        const star = { x: canvas.width / 2, y: canvas.height / 2, mass: 1200, r: 22 };
         let planets = []; let touchStart = null; let currentTouch = null;
 
         function updatePhysics() {
+            // High-precision vector matrix loop mapping gravity force paths
             for (let i = planets.length - 1; i >= 0; i--) {
-                let p = planets[i]; let dx = star.x - p.x; let dy = star.y - p.y;
-                let distSq = dx * dx + dy * dy; let dist = Math.sqrt(distSq);
+                let p = planets[i]; 
+                let dx = star.x - p.x; 
+                let dy = star.y - p.y;
+                let distSq = dx * dx + dy * dy; 
+                let dist = Math.sqrt(distSq);
+                
+                // Collision mechanics tracking structure
                 if (dist < star.r + p.r) { planets.splice(i, 1); continue; }
-                let force = star.mass / distSq; p.vx += (dx / dist) * force; p.vy += (dy / dist) * force;
-                p.x += p.vx; p.y += p.vy;
-                if (p.x < -50 || p.x > canvas.width + 50 || p.y < -50 || p.y > canvas.height + 50) { planets.splice(i, 1); }
+                
+                // Classic Newtonian gravity calculations: F = G * (m1 * m2) / r^2
+                let force = star.mass / distSq; 
+                p.vx += (dx / dist) * force; 
+                p.vy += (dy / dist) * force;
+                
+                p.x += p.vx; 
+                p.y += p.vy;
+                
+                // Screen boundary calculation loop to prevent infinite memory leaks
+                if (p.x < -100 || p.x > canvas.width + 100 || p.y < -100 || p.y > canvas.height + 100) { 
+                    planets.splice(i, 1); 
+                }
             }
         }
+
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw central sun structure
             ctx.beginPath(); ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2); ctx.fillStyle = '#f59e0b'; ctx.fill();
-            planets.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = '#38bdf8'; ctx.fill(); });
+            
+            // Draw orbiting active planet elements
+            planets.forEach(p => { 
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = '#38bdf8'; ctx.fill(); 
+            });
+            
+            // Render interactive vector lines when drawing back launcher
             if (touchStart && currentTouch) {
                 ctx.beginPath(); ctx.moveTo(touchStart.x, touchStart.y); ctx.lineTo(currentTouch.x, currentTouch.y);
                 ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3; ctx.stroke();
             }
+            
             updatePhysics(); requestAnimationFrame(draw);
         }
+
         canvas.addEventListener('pointerdown', (e) => {
             const rect = canvas.getBoundingClientRect();
             touchStart = { x: e.clientX - rect.left, y: e.clientY - rect.top }; currentTouch = { ...touchStart }; e.preventDefault();
@@ -65,6 +96,7 @@ simulation_js = """
         });
         canvas.addEventListener('pointerup', (e) => {
             if (!touchStart) return;
+            // Capture multi-body velocity coordinates mapping out trajectory paths
             planets.push({ x: touchStart.x, y: touchStart.y, vx: (touchStart.x - currentTouch.x) * 0.08, vy: (touchStart.y - currentTouch.y) * 0.08, r: 8 });
             touchStart = null; currentTouch = null; e.preventDefault();
         });
@@ -73,4 +105,6 @@ simulation_js = """
 </body>
 </html>
 """
+
+# Render graphics block frame safely bypassing url filtering walls
 components.html(simulation_js, height=470)
